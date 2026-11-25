@@ -1,8 +1,12 @@
 import time
+import os
+from dotenv import load_dotenv
 from obsws_python import ReqClient
 
+load_dotenv()
+
 #OBS-WebSocket-Einstellungen
-client = ReqClient(host="localhost", port=4455, password="Das OBS Websocket Passwort hier rein")
+client = ReqClient(host="localhost", port=4455, password=os.getenv("OBS_PASSWORD"))
 
 #Abfrage OBS Version
 version = client.get_version()
